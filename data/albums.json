@@ -1,0 +1,119 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": "1922102190",
+            "name": "Album H1",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H2",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H3",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H4",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H1",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H2",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "yy/xx/5102",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H3",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        },
+        {
+            "id": "1922102190",
+            "name": "Album H4",
+            "description": "",
+            "thumbnail": "http://placehold.it/640x480",
+            "created_date": "09/09/2015",
+            "url": "#albumh1",
+            "author": {
+                "id": "u121419421",
+                "name": "Viet241",
+                "avatar": "http://placehold.it/60x60",
+                "url": "#user1"
+            }
+        }
+    ],
+    "next": "next_page_request",
+    "lastpage": false
+}
