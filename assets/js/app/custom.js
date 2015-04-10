@@ -192,8 +192,45 @@ $("#loginForm").submit(function() {
         if($(this).attr('type') == "email")
             email = $(this).val();
         if($(this).attr('type') == "password")
+            //password = CryptoJS.SHA1($(this).val());
             password = $(this).val();
     });
     
-    
+    $.ajax({
+        type: "POST",
+        url: "php/loginController.php",
+        data: "email="+email+"&password="+password,
+        success: function(answer) {
+            //alert(answer);
+            console.log(answer);
+        },
+        statusCode: {
+            404: function() {
+                console.log("page not found");
+            }
+        }
+    });
 });
+
+/*function testLogin() {
+    $.ajax({
+        type: "POST",
+        url: "php/loginController.php",
+        data: "email=stu1@gmail.com&password=1234",
+        success: function(answer) {
+            //alert(answer);
+            console.log(answer);
+        },
+        statusCode: {
+            404: function() {
+                console.log("page not found");
+            }
+        }
+    });
+}
+
+function testRegister() {
+    
+}
+
+testLogin();*/

@@ -848,6 +848,7 @@ Content Area (right)
      padding-bottom: 20px;
      min-height: 550px;
      min-height: 82vh;
+     min-height: calc(100vh - 111px);
  }
  /*** Page Header / Page Title ***/
  
@@ -995,7 +996,7 @@ Styled Radio/Checkbox
  }
  /* Checkbox */
  
- .cr-styled input[type=checkbox]: + i:before {
+ .cr-styled input[type=checkbox]:checked + i:before {
      content: "\f00c";
  }
  /* Radio */
