@@ -203,6 +203,7 @@ $("#loginForm").submit(function() {
         success: function(answer) {
             //alert(answer);
             console.log(answer);
+            window.location.href = '?action=home';
         },
         statusCode: {
             404: function() {
@@ -210,6 +211,8 @@ $("#loginForm").submit(function() {
             }
         }
     });
+    
+    return true;
 });
 
 /*function testLogin() {

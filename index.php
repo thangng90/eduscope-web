@@ -1,5 +1,5 @@
 <?php 
-//include_once("php/models/UsersModel.php");
+include_once("php/models/UsersModel.php");
 session_start();
 ob_start();
 
@@ -13,9 +13,9 @@ if(isset($_GET['action'])) {
 			include 'pages/home/home.php';
 			break;
 		//Action Logout	
-		case 'signout':
-			//unset($_SESSION['username']);
-			//header("location: ../");
+		case 'logout':
+			unset($_SESSION['user']);
+			header("location: ?action=home");
 			break;
 		case 'contact':
 			//Contact
@@ -31,6 +31,18 @@ if(isset($_GET['action'])) {
 				header("location: ?action=home&result=false&username=".$username."#toactive");
 			break;
         
+        case 'step':
+            include 'pages/step/step.php';
+            break;
+        
+        case 'all-albums':
+            include 'pages/all-albums/all-albums.php';
+            break;
+        
+        case 'all-photos':
+            include 'pages/all-photos/all-photos.php';
+            break;
+        
 		case 'settings':
 			include 'pages/user_settings/settings.php';
 			break;
@@ -42,4 +54,5 @@ if(isset($_GET['action'])) {
 else {
 	include 'pages/home/home.php';
 }
+
 ?>

@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>UI v.1.0</title>
+    <title>EduScope Network</title>
+    <link rel="shortcut icon" href="assets/images/logo/eduscope-48.png" />
     <meta name="description" content="">
     <meta name="author" content="Ideas and Solutions">
     <!-- Bootstrap core CSS -->
@@ -42,21 +43,10 @@
         </div>
     </div>
     <!-- Preloader -->
-    <aside class="left-panel">
-       <?php
-            if(isset($_SESSION('username')))
-        ?>
-        <nav class="navigation">
-            <ul class="list-unstyled">
-                <li><a class="open-modal" data-target="#loginModal" href="signin.html"><i class="fa fa-sign-in"></i><span class="nav-label">Đăng nhập</span></a>
-                </li>
-                <li><a class="open-modal" data-target="#registerModal" href="signup.html"><i class="fa fa-user-plus"></i><span class="nav-label">Đăng ký</span></a>
-                </li>
-                <li><a href="faq.html"><i class="fa fa-question-circle"></i><span class="nav-label">FaQ</span></a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
+    
+    <!-- User left panel -->
+    <?php include "common/drawer.php"; ?>
+    
     <section class="content">
         <header class="top-head container-fluid">
             <button type="button" class="navbar-toggle pull-left">
@@ -66,7 +56,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">LOGO</a>
-            <a href="home1.html" class="btn btn-success navbar-btn pull-right"><i class="fa fa-hand-o-right"></i></a>
+            <a href="?action=step" class="btn btn-success navbar-btn pull-right"><i class="fa fa-hand-o-right"></i></a>
         </header>
         <!-- /header -->
         <div class="warper container-fluid">
@@ -132,111 +122,18 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </div>
-
-
-
-
-
             <!-- /end slider -->
-            <!-- Register Modal -->
-            <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form role="form">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title" id="registerModalLabel">Đăng ký thành viên</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tên đăng nhập">
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Tên hiển thị">
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                                <div class="location form-group row">
-                                    <div class="col-xs-6">
-                                        <select class="form-control chosen-select prov-select" data-placeholder="Chọn tỉnh thành">
-                                            <option></option>
-                                            <option value="p1">Province #1</option>
-                                            <option value="p2">Province #2</option>
-                                            <option value="p3">Province #3</option>
-                                            <option value="p4">Province #4</option>
-                                            <option value="p5">Province #5</option>
-                                            <option value="p6">Province #6</option>
-                                            <option value="p7">Province #7</option>
-                                            <option value="p8">Province #8</option>
-                                            <option value="p9">Province #9</option>
-                                            <option value="p10">Province #10</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <select class="form-control chosen-select school-select" data-placeholder="Chọn trường">
-                                            <option></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                    <input type="password" class="form-control" placeholder="Mật khẩu">
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Đăng ký</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- Login Modal -->
-            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <form role="form" id="loginForm">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title" id="loginModalLabel">Đăng nhập</h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                    <input type="email" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="form-group input-group">
-                                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                    <input type="password" class="form-control" placeholder="Mật khẩu" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <div class="pull-left">
-                                    <label class="cr-styled">
-                                        <input type="checkbox" name="remember">
-                                        <i class="fa"></i>
-                                    </label>
-                                    Ghi nhớ?
-                                </div>
-                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--- end loginModal -->
+            <!-- include login and register dialogs if needed -->
+            <?php 
+                if(!isset($_SESSION['user'])) {
+                    include "common/dialogs/login.php";
+                    include "common/dialogs/register.php";
+                }
+            ?>
+
         </div>
         <footer class="container-fluid footer">
-            Copyright &copy; 2015 <a href="#">ABCDEF</a>
+            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Ltd.</a>
             <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
         </footer>
     </section>

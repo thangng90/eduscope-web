@@ -1,11 +1,12 @@
 <?php
+$webroot = $_SERVER['DOCUMENT_ROOT'] . "eduscope/";
 require_once 'swift/lib/swift_required.php';
-include_once('classes/Users.php');
-include_once('classes/Schools.php');
-include_once('classes/Province.php');
-include_once('classes/Devices.php');
-include_once('classes/Album.php');
-include_once('classes/Photos.php');
+include_once($webroot . 'php/classes/Users.php');
+include_once($webroot . 'php/classes/Schools.php');
+include_once($webroot . 'php/classes/Province.php');
+include_once($webroot . 'php/classes/Devices.php');
+include_once($webroot . 'php/classes/Album.php');
+include_once($webroot . 'php/classes/Photos.php');
 include_once('dbhelper.php');
 
 class UsersModel extends dbhelper{
@@ -119,7 +120,7 @@ class UsersModel extends dbhelper{
 				session_start();
 				$location = $this->getLocationName($row['IdSchool']);
 				$numPhoto = $this->getNumberPhoto($row['IdUser']);
-				$user_lg= new Users($row['IdUser'],$row['Fullname'],$location[0],$location[1],$row['Email'],$row['Phone'],$row['IdUserGroup'],$row['DateRegister'],$numPhoto);			
+				$user_lg= new Users($row['IdUser'], $row['Username'], $row['Fullname'],$location[0],$location[1],$row['Email'],$row['Phone'],$row['IdUserGroup'],$row['DateRegister'],$numPhoto);			
 				print_r($user_lg);
 				$_SESSION['user']= $user_lg;		
 				return 0;	
