@@ -24,10 +24,10 @@ class UsersModel extends dbhelper{
 		return NULL;
 	}
 	public function getListSchool($_idprovince){
-		$sql = "SELECT * FROM SCHOOL WHERE IdProvince=$idprovince";
+		$sql = "SELECT * FROM SCHOOL WHERE IdProvince=$_idprovince";
 		$result = parent::execQuery($sql);
 		$lstSchool = array();
-		if (parent::getNumberRows($result)>0){
+		if (parent::getNumberRows($result)>0) {
 			while($row = parent::fetchArray($result)){
 				$school = new Schools($row['IdSchool'],$row['SchoolName'],$row['Status']);
 				array_push($lstSchool,$school);
@@ -36,7 +36,7 @@ class UsersModel extends dbhelper{
 		}
 		return NULL;
 	}
-	public function registerUser($_username, $_passwd, $_fullname, $_email, $_phone, $_idschool, $_idgroup){
+	public function registerUser($_username, $_passwd, $_fullname, $_email, $_phone, $_idschool, $_idgroup) {
 		if ($this->checkUser($_username))
 			return 2;
 		if ($this->checkEmail($_email))
@@ -51,8 +51,8 @@ class UsersModel extends dbhelper{
 			VALUES ('$_username','$pass_hash','$_fullname','$_email','$_phone',$_idschool,$_idgroup,0)";
 			if(parent::execSQL($sql_user))
 			{
-				$link = "https://www.ispioneer.com/nhvcam/eduscope/api/?type=14&activatecode=$key&username=$_username";
-				$this->sendEmail($link,$_email);
+				$link = "https://www.ispioneer.com/eduscope?action=activate&username=$_username&code=$key";
+				$this->sendEmail($link, $_email, $_fullname);
 				return 0;	
 			}
 		}	
@@ -82,20 +82,21 @@ class UsersModel extends dbhelper{
 		}
 		return false;
 	}
-	private function sendEmail($_message,$_email){
+	private function sendEmail($_message, $_email, $_fullname) {
 		$transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, "ssl")
   		->setUsername('is.forwarder454@gmail.com')
   		->setPassword('forwarder454');
 
 		$mailer = Swift_Mailer::newInstance($transport);
 
-		$message = Swift_Message::newInstance('Ideas and Solution - Activation mail')
-  		->setFrom(array('is.forwarder454@gmail.com' => 'IS Supporter '))
+		$message = Swift_Message::newInstance('EduScope Network - Activation mail')
+  		->setFrom(array('is.forwarder454@gmail.com' => 'IS Technology Supporter '))
   		->setTo(array($_email))
-  		->setBody("To complete your registration, please visit this URL:\n$_message");
+  		->setBody("Hello, $_fullname\n\nWellcome to EduScope Network. To complete your registration, please visit this URL:\n$_message\n\nHave a good day!");
 		$result = $mailer->send($message);
 	}
-	public function activeAccount($_username,$_activekey){
+    
+	public function activateAccount($_username, $_activekey) {
 		if (!$this->checkUser($_username))
 			return 1;
 		$sql_key = "SELECT * FROM `eduscope_db`.`ACTIVEKEYS` WHERE `Keys`='$_activekey'";
@@ -104,16 +105,20 @@ class UsersModel extends dbhelper{
 			$sql_del = "DELETE FROM `eduscope_db`.`ACTIVEKEYS` WHERE `IdActive`='$_username'";
 			$sql_up = "UPDATE `eduscope_db`.`USER` SET Status=1 WHERE `Username`='$_username'";
 			echo $sql_del;
-			if ( parent::execSQL($sql_del) && parent::execSQL($sql_up))
+			if (parent::execSQL($sql_del) && parent::execSQL($sql_up))
 				return 0;
 			else
 				return 2;
 		}
 	}
-	public function login($_username,$_passwd){
+    
+	public function login($_username, $_passwd, $_flag) {
 		//$pass_hash = sha1($_passwd);
-		$sql="SELECT * FROM `eduscope_db`.`USER` 
-		WHERE (`Username`='$_username' OR `Email`='$_username') AND Password='$_passwd' AND Status=1";
+        if($_flag == 0) {
+            $sql="SELECT * FROM `eduscope_db`.`USER` WHERE (`Username`='$_username' OR `Email`='$_username') AND Password='$_passwd' AND Status=1";
+        } else if($_flag == 1) {
+            $sql="SELECT * FROM `eduscope_db`.`USER` WHERE (`Username`='$_username' OR `Email`='$_username') AND Status=1";
+        }
 		$result=parent::execQuery($sql);
 		if(parent::getNumberRows($result)>0){
 			if($row = parent::fetchArray($result)){

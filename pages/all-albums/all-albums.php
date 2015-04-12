@@ -403,7 +403,7 @@
             
         </div>
         <footer class="container-fluid footer">
-            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Ltd.</a>
+            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Co., Ltd.</a>
             <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
         </footer>
     </section>

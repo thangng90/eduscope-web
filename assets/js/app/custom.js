@@ -149,12 +149,13 @@ $(function () {
     $(".prov-select").change(function () {
         var schoolE = $(this).closest("form").find(".school-select");
         $.ajax({
+            type: "POST",
             dataType: "json",
-            url: "data/schools.json",
-            data: {
-                provId: $(this).val()
-            },
+            //url: "data/schools.json",
+            url: "php/getSchoolController.php",
+            data: "provinceId="+$(this).val(),
             success: function (list) {
+                console.log(list);
                 if (!list.success) {
                     console.log("Error");
                     return !1;
@@ -169,7 +170,9 @@ $(function () {
                 });
             },
             error: function () {
+                schoolE.empty();
                 console.log("Error");
+                schoolE.trigger('chosen:updated');
             }
         });
     });
@@ -215,25 +218,69 @@ $("#loginForm").submit(function() {
     return true;
 });
 
-/*function testLogin() {
-    $.ajax({
-        type: "POST",
-        url: "php/loginController.php",
-        data: "email=stu1@gmail.com&password=1234",
-        success: function(answer) {
-            //alert(answer);
-            console.log(answer);
-        },
-        statusCode: {
-            404: function() {
-                console.log("page not found");
-            }
-        }
-    });
-}
-
-function testRegister() {
+$("#registerForm").submit(function() {
+    var inputs = $("form#registerForm :input");
+    var schoolE = $(this).closest("form").find(".school-select");
+    var provinceE = $(this).closest("form").find(".prov-select");
     
-}
+    var fullname = "";
+    var username = "";
+    var email = "";
+    var schoolId;
+    var provinceId;
+    var password = "";
+    var confirmPassword = "";
+    
+    inputs.each(function() {
+        if($(this).attr('class') == "form-control username") {
+            username = $(this).val();
+            console.log("username: " + username);
+        }
+        if($(this).attr('class') == "form-control fullname") {
+            fullname = $(this).val();
+            console.log("fullname: " + fullname);
+        }
+        if($(this).attr('class') == "form-control password") {
+            password = $(this).val();
+            console.log("password: " + password);
+        }
+        if($(this).attr('class') == "form-control confirm-password") {
+            confirmPassword = $(this).val();
+            console.log("confirm password: " + confirmPassword);
+        }
+        if($(this).attr('type') == "email") {
+            email = $(this).val();
+            console.log("email: " + email);
+        } 
+    });
+    
+    schoolId = schoolE.find(":selected").val();
+    provinceId = provinceE.find(":selected").val();
+    console.log("schoolId: " + schoolId);
+    console.log("provinceId: " + provinceId);
+    
+    if(password != confirmPassword) {
+        console.log("confirm password does not match");
+        return false;
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "php/registerController.php",
+            data: "fullname="+fullname+"&username="+username+"&email="+email+"&schoolId="+schoolId+"&password="+password,
+            success: function(answer) {
+                console.log(answer);
+            },
+            error: function() {
+                
+            }
+        })
+    }
+});
 
-testLogin();*/
+$("#activationForm").submit(function() {
+    window.location.href = '?action=home';
+});
+
+function showActivationModal() {
+    $("#activationModal").modal('show');
+}

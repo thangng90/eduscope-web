@@ -55,7 +55,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="#">EduScope Network</a>
             <a href="?action=step" class="btn btn-success navbar-btn pull-right"><i class="fa fa-hand-o-right"></i></a>
         </header>
         <!-- /header -->
@@ -123,17 +123,24 @@
                 </a>
             </div>
             <!-- /end slider -->
-            <!-- include login and register dialogs if needed -->
+            <!-- include login, register and activation dialogs if needed -->
             <?php 
                 if(!isset($_SESSION['user'])) {
                     include "common/dialogs/login.php";
                     include "common/dialogs/register.php";
+                    include "common/dialogs/activation.php";
                 }
+
+                //include activation dialog if needed
+                /*if(isset($_GET['action'])) {
+                    if($_GET['action'] == "activate")
+                        include "common/dialogs/activation.php";
+                }*/    
             ?>
 
         </div>
         <footer class="container-fluid footer">
-            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Ltd.</a>
+            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Co., Ltd.</a>
             <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
         </footer>
     </section>

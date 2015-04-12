@@ -21,14 +21,21 @@ if(isset($_GET['action'])) {
 			//Contact
 			break;
         
-		case 'active':			
-			$username= $_GET['username'];
-			$active_code =$_GET['id'];
-			$model= new UsersModel();
-			if($model->active_account($username, $active_code))
-				header("location: ?action=home&result=true&username=".$username."#toactive");
-			else
-				header("location: ?action=home&result=false&username=".$username."#toactive");
+		case 'activate':
+            unset($_SESSION['user']);
+            if(isset($_GET['username']) && isset($_GET['code'])) {
+                include 'pages/home/home.php';
+                $username= $_GET['username'];
+                $activate_code =$_GET['code'];
+                
+                $model= new UsersModel();
+                if($model->activateAccount($username, $activate_code) == 0) {
+                    $model->login($username, "", 1);
+                    echo "<script>showActivationModal();</script>";
+                }
+            } else {
+                header("location: ?action=home");
+            }
 			break;
         
         case 'step':
