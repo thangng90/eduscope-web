@@ -129,6 +129,7 @@
                     include "common/dialogs/login.php";
                     include "common/dialogs/register.php";
                     include "common/dialogs/activation.php";
+                    include "common/dialogs/register-notification.php";
                 }
 
                 //include activation dialog if needed

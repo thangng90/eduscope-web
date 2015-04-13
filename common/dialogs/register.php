@@ -52,6 +52,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <div class="pull-left reg-loading">
+                                </div>
                                 <button type="submit" class="btn btn-primary">Đăng ký</button>
                             </div>
                         </form>

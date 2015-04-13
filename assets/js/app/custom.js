@@ -195,8 +195,9 @@ $("#loginForm").submit(function() {
         if($(this).attr('type') == "email")
             email = $(this).val();
         if($(this).attr('type') == "password")
-            //password = CryptoJS.SHA1($(this).val());
-            password = $(this).val();
+            password = CryptoJS.SHA1($(this).val());
+            //password = $(this).val();
+        //console.log("pasword: " + password);
     });
     
     $.ajax({
@@ -205,7 +206,7 @@ $("#loginForm").submit(function() {
         data: "email="+email+"&password="+password,
         success: function(answer) {
             //alert(answer);
-            console.log(answer);
+            //console.log(answer);
             window.location.href = '?action=home';
         },
         statusCode: {
@@ -263,12 +264,29 @@ $("#registerForm").submit(function() {
         console.log("confirm password does not match");
         return false;
     } else {
+        // display loading
+        $(".reg-loading").html("<i class='fa fa-spinner fa-spin fa-3x'></i>");
         $.ajax({
             type: "POST",
             url: "php/registerController.php",
             data: "fullname="+fullname+"&username="+username+"&email="+email+"&schoolId="+schoolId+"&password="+password,
             success: function(answer) {
-                console.log(answer);
+                $(".reg-loading").empty();
+                $("#registerModal").modal('hide');
+                $("#regNotificationModal").modal('show');
+                var resultText = "";
+                console.log("answer: " + answer);
+                switch(parseInt(answer)) {
+                    case 0:
+                        resultText = "Cảm ơn bạn đã đăng kí tài khoản tại EduScope Network.<br/><br/>Một email đã được gửi đến địa chỉ <span style='color:blue;'><i>" + email + "</i></span>, vui lòng kiểm tra hộp thư đến và làm theo hướng dẫn để hoàn tất việc đăng kí.";
+                        console.log("case 0");
+                        break;
+                    default:
+                        resultText = "Đã có lỗi xảy ra trong quá trình đăng kí. Vui lòng đăng kí lại.";
+                        break;
+                }
+                
+                $("#informText").html(resultText);
             },
             error: function() {
                 
@@ -283,4 +301,8 @@ $("#activationForm").submit(function() {
 
 function showActivationModal() {
     $("#activationModal").modal('show');
+}
+
+function closeModal() {
+    $("#regNotificationModal").modal('hide');
 }

@@ -23,11 +23,12 @@ if(isset($_POST['username']) and isset($_POST['email']) and isset($_POST['passwo
 	}
 	else {
 		$result = $model->registerUser($username, $password, $fullname, $email, $phone, $schoolId, 1);
-		if ($result == 0)
+        echo $result;
+		/*if ($result == 0)
 			echo "Thank you for registering at the NHV-CAM. Please check your email to activate your account!";
 		else 
             //echo 'Error. Please sign up again!';
-            echo $result;
+            echo $result;*/
 	}
 }
 ?>

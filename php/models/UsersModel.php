@@ -43,12 +43,11 @@ class UsersModel extends dbhelper{
 			return 1;
 		$key = md5(uniqid(rand(), true)).md5(uniqid(rand(), true));
 		$expired = date_format(date_create(), ' Y-m-d H:i:s');
-		$pass_hash = sha1($_passwd);
 		$sql_key = "INSERT INTO `eduscope_db`.`ACTIVEKEYS` (`IdActive`,`Keys`) VALUES ('$_username','$key')";
 		if(parent::execSQL($sql_key))
 		{
 			$sql_user = "INSERT INTO `eduscope_db`.`USER` (`Username`,`Password`,`Fullname`,`Email`,`Phone`,`IdSchool`,`IdUserGroup`,`Status`) 
-			VALUES ('$_username','$pass_hash','$_fullname','$_email','$_phone',$_idschool,$_idgroup,0)";
+			VALUES ('$_username','$_passwd','$_fullname','$_email','$_phone',$_idschool,$_idgroup,0)";
 			if(parent::execSQL($sql_user))
 			{
 				$link = "https://www.ispioneer.com/eduscope?action=activate&username=$_username&code=$key";
