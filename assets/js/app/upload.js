@@ -7,7 +7,7 @@ $(function () {
     previewNode.parentNode.removeChild(previewNode);
 
     var vUp = new Dropzone(document.querySelector("#previews"), {
-        url: "php/upload.php",
+        url: "php/uploadController.php",
         thumbnailWidth: 400,
         thumbnailHeight: 300,
         parallelUploads: 3,

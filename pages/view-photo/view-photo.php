@@ -1,72 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>UI v.1.0</title>
-	<meta name="description" content="">
-	<meta name="author" content="Ideas and Solutions">
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" href="assets/css/app/app.v1.css" />
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<!-- Preloader -->
-	<div class="loading-container">
-		<div class="loading">
-			<div class="l1">
-				<div></div>
-			</div>
-			<div class="l2">
-				<div></div>
-			</div>
-			<div class="l3">
-				<div></div>
-			</div>
-			<div class="l4">
-				<div></div>
-			</div>
-		</div>
-	</div>
-	<!-- Preloader -->
-	<aside class="left-panel">
-		<div class="user text-center">
-			<a href="user1.html"><img src="assets/images/avtar/avatar.jpg" class="img-circle" alt="">
-			</a>
-			<h4 class="user-name">Thành viên #1</h4>
-		</div>
-		<nav class="navigation">
-			<ul class="list-unstyled">
-				<li><a href="upload.html"><i class="fa fa-upload"></i><span class="nav-label">Upload ảnh</span></a>
-				</li>
-				<li><a href="my-albums.html"><i class="fa fa-camera-retro"></i><span class="nav-label">Ảnh của tôi</span></a>
-				</li>
-				<li><a href="faq.html"><i class="fa fa-question-circle"></i><span class="nav-label">FAQ</span></a>
-				</li>
-				<li><a href="edit-user.html"><i class="fa fa-pencil-square-o"></i><span class="nav-label">Sửa thông tin</span></a>
-				</li>
-				<li><a href="logout.html"><i class="fa fa-sign-out"></i><span class="nav-label">Đăng xuất</span></a>
-				</li>
-			</ul>
-		</nav>
-	</aside>
-	<section class="content some-class">
-		<header class="top-head container-fluid">
-			<button type="button" class="navbar-toggle pull-left">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">LOGO</a><a href="upload.html" class="btn btn-primary navbar-btn pull-right"><i class="fa fa-upload"></i></a>
-		</header>
-		<!-- /header -->
+		<!-- above is header -->
 		<div class="warper container-fluid">
 			<div class="page-header text-center">
 				<h1>Photo #1</h1>
@@ -103,7 +35,7 @@
 							<div class="description-content">
 								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae accusamus minima eius praesentium illo dolorem ullam at cupiditate, adipisci asperiores quam pariatur eaque repellat distinctio repellendus eum culpa tempore voluptas maiores, voluptatum, repudiandae voluptate ipsum! Earum, aut! Deleniti, est vitae libero quia iusto, fuga culpa architecto recusandae esse eius accusamus, totam temporibus! Praesentium quis, tempora quo. Labore officiis accusantium fugiat vel quae rem aliquam incidunt alias, nihil ratione mollitia animi itaque, maxime porro dolorem iste? Vitae beatae voluptate nobis aspernatur. Praesentium explicabo, aut pariatur repellat iste sapiente nisi dicta? Harum quibusdam iure dolore quaerat. Illo voluptas similique debitis nobis.
 							</div>
-				            <a class="edit" href="#"><i class="fa fa-pencil"></i></a>
+							<a class="edit" href="#"><i class="fa fa-pencil"></i></a>
 						</div>
 					</div>
 				</div>
@@ -141,13 +73,13 @@
 			</div>
 		</div>
 		<footer class="container-fluid footer">
-			Copyright &copy; 2015 <a href="#">ABCDEF</a>
-			<a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
-		</footer>
+            Copyright &copy; 2015 <a href="#">Lawrence S.Ting Fund | IS Technology Co., Ltd.</a>
+            <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
+        </footer>
 	</section>
 	<!-- /footer - begin scripts-->
 	<!-- JQuery -->
-	<script src="assets/js/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<!-- Bootstrap -->
 	<script src="assets/js/bootstrap/bootstrap.min.js"></script>
 	<!-- NanoScroll -->

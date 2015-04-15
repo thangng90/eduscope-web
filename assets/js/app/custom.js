@@ -38,7 +38,75 @@ $.fn.serializeObject = function () {
     return o;
 };
 
+// Confirm Dialog        
+$("[data-confirm]").on('click', function(){
+    if (!confirm($(this).data('confirm'))) return !1;
+});
+
 /*==============   UI.V1   ================*/
+
+// vNotify
+$.extend({
+    vNotify: function (options, type) {
+        var def = {
+            type: 'success',
+            duration: 0,
+            dismissable: true,
+            message: '',
+            class: '',
+            // container: '#alert-box'
+        };
+        if ($.type(options) === "string") options = {
+            message: options
+        };
+        if (type) options.type = type;
+        options = $.extend({}, def, options);
+
+        // build container
+        options.container = (options.container && $(options.container).length) ? $(options.container) : $('.alert-box.fixed').length ? $('.alert-box.fixed') : $('<div class="alert-box fixed" />').appendTo('body');
+
+        // add notification
+        var $al = $("<div />", {
+            class: 'alert alert-' + options.type,
+            text: options.message
+        });
+        options.class && $al.addClass(options.class);
+        options.dismissable && $al.addClass('alert-dismissible').prepend('<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>');
+        options.container.append(function () {
+            if (options.duration)
+                return $al.fadeIn().delay(options.duration).fadeOut(function () {
+                    $(this).remove();
+                })
+            return $al;
+        });
+    }
+});
+/*
+
+Cách dùng vNotify:
+
+$.vNotify('Nội dung thông báo'); // kiểu mặc định là success - màu xanh lá
+
+$.vNotify('Nội dung thông báo', 'info'); // tham số thứ 2, các kiểu alert:   info / success / danger / warning
+
+$.vNotify({
+    message: 'Nội dung là đây',
+    type: 'danger',             // các kiểu alert:   info / success / danger / warning
+    duration: 2000,             // thời gian hiển thị, alert box sẽ ẩn sau thời gian này
+    dismissable: true,          // false: không cho phép tắt, ẩn nút close
+    class: 'abc',         // custom class
+    container: '#selector'      // thành phần chứa thông báo, nếu không có container, thông báo sẽ hiển thị góc phải bên dưới
+});
+
+// option mặc định:
+        type: 'success',
+        duration: 0,
+        dismissable: true,
+        message: '',
+        class: '',
+*/
+
+
 // Preloader
 $(window).load(function () {
     $('.loading-container').fadeOut(100, function () {
@@ -265,7 +333,7 @@ $("#registerForm").submit(function() {
         return false;
     } else {
         // display loading
-        $(".reg-loading").html("<i class='fa fa-spinner fa-spin fa-3x'></i>");
+        $(".reg-loading").html("<i class='fa fa-spinner fa-spin fa-2x'></i>");
         $.ajax({
             type: "POST",
             url: "php/registerController.php",

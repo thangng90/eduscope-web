@@ -2,7 +2,7 @@
 include_once("php/models/UsersModel.php");
 session_start();
 ob_start();
-
+include "common/header.php";
 if(isset($_GET['action'])) {	
     
     $action = $_GET['action'];
@@ -50,9 +50,38 @@ if(isset($_GET['action'])) {
             include 'pages/all-photos/all-photos.php';
             break;
         
-		case 'settings':
-			include 'pages/user_settings/settings.php';
-			break;
+        case 'upload':
+            include 'pages/upload/upload.php';
+            break;
+        
+        case 'user-info':
+            if(isset($_GET['edit'])) {
+                include 'pages/user-info/user-info-edit.php';
+            } else {
+                include 'pages/user-info/user-info.php';
+            }
+            break;
+        
+        case 'faq':
+            include 'pages/faq/faq.php';
+            break;
+        
+        case 'my-photos':
+            if(isset($_GET['albumId'])) {
+                $albumId = $_GET['albumId'];
+                include 'pages/usr-photo/album-content.php';
+            } else {
+                include 'pages/usr-photo/my-albums.php';
+            }
+            break;
+        
+        case 'view-photo':
+            if(isset($_GET['photoId'])) {
+                $photoId = $_GET['photoId'];
+                include 'pages/view-photo/view-photo.php';
+            }
+            break;
+        
 		default:
 			include 'pages/home/home.php';
 			break;

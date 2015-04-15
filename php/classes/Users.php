@@ -10,6 +10,7 @@ class Users{
 	public $group;
 	public $registrationDate;
 	public $numPhoto;
+    
 	function Users($_iduser, $_username, $_fullname, $_schoolname, $_provincename, $_email, $_phone, $_idgroup, $_regDate, $_numPhoto)
 	{
 		$this->idUser 					=	$_iduser;
