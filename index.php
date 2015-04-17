@@ -43,7 +43,12 @@ if(isset($_GET['action'])) {
             break;
         
         case 'all-albums':
-            include 'pages/all-albums/all-albums.php';
+            if(isset($_GET['albumId'])) {
+                $albumId = $_GET['albumId'];
+                include 'pages/all-albums/album-content.php';
+            } else {
+                include 'pages/all-albums/all-albums.php';
+            }
             break;
         
         case 'all-photos':
@@ -78,6 +83,7 @@ if(isset($_GET['action'])) {
         case 'view-photo':
             if(isset($_GET['photoId'])) {
                 $photoId = $_GET['photoId'];
+                //$albumId = $_GET['albumId'];
                 include 'pages/view-photo/view-photo.php';
             }
             break;

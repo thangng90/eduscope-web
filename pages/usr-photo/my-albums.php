@@ -3,8 +3,48 @@
             <div class="page-header">
                 <h1>Album ảnh</h1>
             </div>
+            
             <div class="row album-grid my-albs">
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
+                <?php 
+                    $model = new UsersModel();
+                    $listAlbum = $model->getListAlbum($_SESSION['user']->idUser);
+                    $numAlbum = count($listAlbum);
+                    $count = 0;
+                    foreach($listAlbum as $album) {
+                        if($count++ == 8)
+                            break;
+                        echo 
+                            "<article class='col-sm-6 col-md-4 col-lg-3 photo-item' data-id='01'>
+                                <div class='item-wrapper transit'>
+                                    <a class='photo-link' href='?action=my-photos&albumId=" . $album->id ."'>
+                                        <figure class='transit'>
+                                            <img src='http://placehold.it/640x480' alt=''>
+                                            <figcaption class='text-center'>
+                                                <i class='fa fa-link'></i>
+                                            </figcaption>
+                                        </figure>
+                                    </a>
+                                    <div class='photo-info'>
+                                        <div class='actions btn-group btn-group-justified' role='edit'>
+                                            <div class='btn-group' role='edit'>
+                                                <a href='my-album-view.html' class='btn view-alb'><i class='fa fa-list'></i></a>
+                                            </div>
+                                            <div class='btn-group' role='edit'>
+                                                <a href='#edit-album.html' class='btn text-warning edit-alb'><i class='fa fa-pencil'></i></a>
+                                            </div>
+                                            <div class='btn-group' role='edit'>
+                                                <a href='#' class='btn delete-alb text-danger'><i class='fa fa-trash'></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='extras'>
+                                        <h2 class='album-name'>" . $album->albumName . "</h2>
+                                    </div>
+                                </div>
+                            </article>";
+                    }
+                ?>
+<!--                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                     <div class="item-wrapper transit">
                         <a class="photo-link" href="?action=my-photos&albumId=0000">
                             <figure class="transit">
@@ -171,7 +211,7 @@
                             <h2 class="album-name">Album XYZ</h2>
                         </div>
                     </div>
-                </article>
+                </article>-->
             </div>
 
             <nav class="text-center">
@@ -183,14 +223,21 @@
                     </li>
                     <li class="active"><a href="#">1</a>
                     </li>
-                    <li><a href="#">2</a>
+                <?php 
+                    if($numAlbum > 8) {
+                        for($i=2; $i<(($numAlbum/8))+1; $i++) {
+                            echo    "<li><a href='#'>" . $i . "</a></li>";
+                        }
+                    }
+                ?>
+                    <!--<li><a href="#">2</a>
                     </li>
                     <li><a href="#">3</a>
                     </li>
                     <li><a href="#">4</a>
                     </li>
                     <li><a href="#">5</a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="#" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>

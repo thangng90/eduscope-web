@@ -1,218 +1,13 @@
         <!-- above is header -->
+        <?php $model = new UsersModel() ?>
         <div class="warper container-fluid">
             <div class="page-header">
-                <h1>Album #1</h1>
+                <h1><?php echo $model->getAlbumName($albumId); ?></h1>
             </div>
             <div class="row photo-grid">
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                    <div class="item-wrapper">
-                        <a class="photo-link" href="?action=view-photo&photoId=1111">
-                            <figure class="transit">
-                                <img src="http://placehold.it/640x480" alt="">
-                                <figcaption class="text-center">
-                                    lorem ipsum
-                                </figcaption>
-                            </figure>
-                        </a>
-                        <div class="album-info">
-                            <div class="actions btn-group btn-group-justified" role="edit">
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-warning edit-photo"><i class="fa fa-pencil"></i></a>
-                                </div>
-                                <div class="btn-group" role="edit">
-                                    <a href="#" class="btn text-danger delete-photo"><i class="fa fa-trash"></i></a>
-                                </div>
-                            </div>
-                            <div class="photo-name extras">
-                                Photo GHJ
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
             </div>
-
-
-            <nav class="text-center">
-                <ul class="pagination">
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="active"><a href="#">1</a>
-                    </li>
-                    <li><a href="#">2</a>
-                    </li>
-                    <li><a href="#">3</a>
-                    </li>
-                    <li><a href="#">4</a>
-                    </li>
-                    <li><a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            
+            <div class="text-center show-more" data-limit="20" data-more="photo"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
 
         </div>
 
@@ -262,6 +57,14 @@
     
     <!-- Custom JQuery -->
     <script src="assets/js/app/custom.js" type="text/javascript"></script>
+    <script src="assets/js/json2html/json2html.min.js"></script>
+    <script src="assets/js/app/ajax.js" type="text/javascript"></script>
+    <script>
+        setGetType("albumId");
+        setStyle('mine');
+        setParam(<?php echo $albumId; ?>);
+        loadFirstPhotoPage();
+    </script>
     <script>
         $(".edit-photo").click(function() {
             var photoE = $(this).closest(".photo-item"),

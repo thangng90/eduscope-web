@@ -7,7 +7,7 @@
                     <div class="row photo-grid">
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -33,32 +33,7 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
-                                    <figure class="transit">
-                                        <img src="http://placehold.it/640x480" alt="">
-                                        <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
-                                    </figure>
-                                </a>
-                                <div class="album-info">
-                                    <div class="photo-name">
-                                        Photo GHJ
-                                    </div>
-                                    <div class="extras">
-                                        <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
-                                        <div class="rating">
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
-                            <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -84,7 +59,7 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -97,11 +72,12 @@
                                     <div class="extras">
                                         <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
                                         <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            <small>(22)</small>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +85,33 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
+                                    <figure class="transit">
+                                        <img src="http://placehold.it/640x480" alt="">
+                                        <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
+                                    </figure>
+                                </a>
+                                <div class="album-info">
+                                    <div class="photo-name">
+                                        Photo GHJ
+                                    </div>
+                                    <div class="extras">
+                                        <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <small>(22)</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
+                            <div class="item-wrapper">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -141,7 +143,7 @@
                     <div class="row photo-grid">
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -167,7 +169,7 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -180,11 +182,12 @@
                                     <div class="extras">
                                         <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
                                         <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            <small>(22)</small>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +195,7 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -205,11 +208,12 @@
                                     <div class="extras">
                                         <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
                                         <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            <small>(22)</small>
                                         </div>
                                     </div>
                                 </div>
@@ -217,7 +221,7 @@
                         </article>
                         <article class="col-sm-6 col-md-4 col-lg-3 photo-item" data-id="01">
                             <div class="item-wrapper">
-                                <a class="photo-link" href="#">
+                                <a class="photo-link" href="?action=view-photo&photoId=2222">
                                     <figure class="transit">
                                         <img src="http://placehold.it/640x480" alt="">
                                         <figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, itaque.</figcaption>
@@ -230,11 +234,12 @@
                                     <div class="extras">
                                         <div class="location"><i class="fa fa-map-marker"></i> HCMc</div>
                                         <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-half-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
+                                            <small>(22)</small>
                                         </div>
                                     </div>
                                 </div>
@@ -243,6 +248,8 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center show-more" data-limit="20" data-more="photo"><i class="fa fa-spinner fa-spin fa-3x"></i></div>
             
             <?php 
                 if(!isset($_SESSION['user'])) {
@@ -269,6 +276,8 @@
     
     <!-- Custom JQuery -->
     <script src="assets/js/app/custom.js" type="text/javascript"></script>
+    <script src="assets/js/json2html/json2html.min.js"></script>
+    <script src="assets/js/app/ajax.js"></script>
 </body>
 
 </html>

@@ -135,6 +135,21 @@ class UsersModel extends dbhelper{
 		}
 		return 21;
 	}
+    
+    public function getUserbyId($_userId) {
+        $sql="SELECT * FROM `eduscope_db`.`USER` WHERE `IdUser`=$_userId AND Status=1";
+        $result=parent::execQuery($sql);
+        if(parent::getNumberRows($result) == 1) {
+            $row = parent::fetchArray($result);
+            $location = $this->getLocationName($row['IdSchool']);
+            $numPhoto = $this->getNumberPhoto($row['IdUser']);
+            $user = new Users($row['IdUser'], $row['Username'], $row['Fullname'],$location[0],$location[1],$row['Email'],$row['Phone'],$row['IdUserGroup'],$row['DateRegister'],$numPhoto);
+            return $user;
+        } else {
+            return null;
+        }
+    }
+    
 	//location[0]=SchoolName;location[1]=ProvinceName;location[2]=ProvinceId;
 	public function getLocationName($_idschool){
 		$sql = "SELECT * FROM `eduscope_db`.`SCHOOL` WHERE `IdSchool`=$_idschool";
@@ -150,6 +165,7 @@ class UsersModel extends dbhelper{
 		}
 		return NULL;
 	}
+    
 	public function getNumberPhoto($_iduser){
 		$sql = "SELECT COUNT(IdUserCreate) FROM `eduscope_db`.`PHOTO` WHERE  `IdUserCreate`=$_iduser";
 		$result = parent::execQuery($sql);
@@ -162,7 +178,7 @@ class UsersModel extends dbhelper{
 		}
 		return $count;
 	}
-	public function getUsergroup($_idusergroup){
+	public function getUsergroup($_idusergroup) {
 		$sql = "SELECT * FROM `eduscope_db`.`USERGROUP` WHERE `IdUserGroup`=$_idusergroup";
 		$result = parent::execQuery($sql);
 		$usergroup = array();
@@ -176,6 +192,7 @@ class UsersModel extends dbhelper{
 		}
 		return NULL;
 	}
+    
 	public function getIdSchool($_iduser){
 		$sql="SELECT * FROM `eduscope_db`.`USER` WHERE `IdUser`=$_iduser AND `Status`=1";
 		$result=parent::execQuery($sql);
@@ -186,6 +203,7 @@ class UsersModel extends dbhelper{
 		}
 		return NULL;
 	}
+    
 	public function getUserFullName($_iduser) {
 		$sql="SELECT * FROM `eduscope_db`.`USER` WHERE `IdUser`=$_iduser AND `Status`=1";
 		$result=parent::execQuery($sql);
@@ -268,16 +286,47 @@ class UsersModel extends dbhelper{
     }
 
 	//get all photos in album
-	public function getListPhoto($_idschool){
-		$nameschool = $this->getLocationName($_idschool)[0];
-		$sql = "SELECT * FROM `eduscope_db`.`PHOTO` WHERE `IdSchool`='$_idschool' AND `Status`=1";
+	public function getListPhoto($_type, $_param, $_page) {
+		$limit = 20;
+		$start = ($_page - 1)*$limit;
+		$param = "";
+		$sql = "";
+		switch ($_type) {
+			case 'schoolId':	// IdSchool
+				$param = "WHERE `eduscope_db`.`PHOTO`.`IdSchool`=$_param AND `eduscope_db`.`PHOTO`.`Status`=1";
+				$sql = "SELECT * FROM `eduscope_db`.`PHOTO` ".$param." ORDER BY `eduscope_db`.`PHOTO`.`IdPhoto` ASC LIMIT $start,$limit";
+				break;
+			case 'provinceId':// IdProvince
+				$param = "WHERE `eduscope_db`.`SCHOOL`.`IdProvince`=$_param AND `eduscope_db`.`PHOTO`.`Status`=1";
+				$sql = "SELECT `eduscope_db`.`PHOTO`.`IdPhoto`,`eduscope_db`.`PHOTO`.`PhotoName`,`eduscope_db`.`PHOTO`.`Description`,
+					`eduscope_db`.`PHOTO`.`DateCreate`,`eduscope_db`.`PHOTO`.`IdUserCreate`,`eduscope_db`.`PHOTO`.`PathParent`,
+					`eduscope_db`.`PHOTO`.`TotalView`,`eduscope_db`.`PHOTO`.`TotalRated`,`eduscope_db`.`PHOTO`.`IdSchool`
+					 FROM `eduscope_db`.`PHOTO` 
+					 INNER JOIN `eduscope_db`.`SCHOOL`
+		 			ON `eduscope_db`.`SCHOOL`.`IdSchool`=`eduscope_db`.`PHOTO`.`IdSchool` ".$param." ORDER BY `eduscope_db`.`PHOTO`.`IdPhoto` ASC LIMIT $start,$limit";
+				break;
+			case 'albumId'://IdAlbum
+				$param = "WHERE `eduscope_db`.`ALBUM_PHOTO`.`IdAlbum`=$_param AND `eduscope_db`.`PHOTO`.`Status`=1";
+				$sql = "SELECT `eduscope_db`.`PHOTO`.`IdPhoto`,`eduscope_db`.`PHOTO`.`PhotoName`,`eduscope_db`.`PHOTO`.`Description`,
+					`eduscope_db`.`PHOTO`.`DateCreate`,`eduscope_db`.`PHOTO`.`IdUserCreate`,`eduscope_db`.`PHOTO`.`PathParent`,
+					`eduscope_db`.`PHOTO`.`TotalView`,`eduscope_db`.`PHOTO`.`TotalRated`,`eduscope_db`.`PHOTO`.`IdSchool`
+					 FROM `eduscope_db`.`PHOTO` 
+					 INNER JOIN `eduscope_db`.`ALBUM_PHOTO`
+		 			ON `eduscope_db`.`ALBUM_PHOTO`.`IdPhoto`=`eduscope_db`.`PHOTO`.`IdPhoto` ".$param." ORDER BY `eduscope_db`.`PHOTO`.`IdPhoto` ASC LIMIT $start,$limit";
+				break;
+			default://IdPhoto
+				$param = "WHERE `eduscope_db`.`PHOTO`.`IdPhoto`=$_param AND `eduscope_db`.`PHOTO`.`Status`=1";
+				$sql = "SELECT * FROM `eduscope_db`.`PHOTO` ".$param;
+				break;
+		}
+		//echo $sql;
 		$arrayresult = array();
 		$result = parent::execQuery($sql);
 		if(parent::getNumberRows($result)>0){
 			while($row = parent::fetchArray($result)){
-				$useruploaded = $this->getUserFullName($row['IdUserCreate']);
+				$provinceName = $this->getLocationName($row['IdSchool'])[1];
 				$photos = new Photos($row['IdPhoto'],
-									 $this->collectSnippetInfo($row['IdPhoto'],$row['PhotoName'],$row['DateCreate'],$row['Description'],$nameschool,$useruploaded,$row['PathThumbnail_I'],$row['PathThumbnail_M'],$row['PathParent']),
+									 $this->collectSnippetInfo($row['IdPhoto'],$row['PhotoName'],$row['DateCreate'],$row['Description'],$provinceName,$row['IdUserCreate'],$row['PathParent']),
 									 $this->collectStatisticsInfo($row['IdPhoto'],$row['TotalView'],$row['TotalRated'])
 									);
 				array_push($arrayresult, $photos);
@@ -287,24 +336,25 @@ class UsersModel extends dbhelper{
 		return NULL;
 	}
 
-	public function collectSnippetInfo($_idphoto, $_photoName, $_dateUploaded, $_description, $_schoolname, $_userUploaded, $_thumbnail, $_preview, $_fullRes){
+	public function collectSnippetInfo($_idphoto, $_photoName, $_dateUploaded, $_description, $_provincename, $_userUploaded, $_thumbnail){
 		$sql = "SELECT * FROM `eduscope_db`.`ALBUM_PHOTO` WHERE `IdPhoto`='$_idphoto' AND `Status`=1";
 		$result=parent::execQuery($sql);
 		$albumName = "";
+		$albumid = "";
 		if(parent::getNumberRows($result)>0){
 			if($row = parent::fetchArray($result)){
 				$albumName = $this->getAlbumName($row['IdAlbum']);
+				$albumid = $row['IdAlbum'];
 			}
 		}
 		$result = array('photoName' 	=> $_photoName,
+						'albumId'		=> $albumid,
 						'albumName' 	=> $albumName,
 						'dateUploaded'	=> $_dateUploaded,
 						'description'	=> $_description,
-						'schoolName'	=> $_schoolname,
+						'provinceName'	=> $_provincename,
 						'userUpload'	=> $_userUploaded,
-						'resolutions'	=> array('thumbnail' => array('url' => $_thumbnail),
-												 'preview' 	 => array('url' => $_preview),
-												 'fullRes'	 => array('url' => $_fullRes))
+						'path'		=> $_thumbnail,
 						);
 		return $result;
 	}
@@ -363,7 +413,7 @@ class UsersModel extends dbhelper{
 		//province->school->user->album->idphoto->1,2,3
 		$idsch = $this->getIdSchool($_iduser);
 		$idpro = $this->getLocationName($idsch)[2];
-		$dir = "../image/";
+		$dir = "../uploads/";
 		$arr = array(strval($idpro),strval($idsch),strval($_iduser));
 		for($i = 0 ; $i < 3 ; $i++){
 			$dir = $dir.$arr[$i]."/";
@@ -499,13 +549,20 @@ class UsersModel extends dbhelper{
 		$iduser = $_iduser;
 		$idsch = $this->getIdSchool($iduser);
 		//check albumId
-		$dir_image = $this->checkAlbum($_albumId, $iduser);		
+		$dir_image = $this->checkAlbum($_albumId, $iduser);
+        $path = substr($dir_image, 3);
 		$sqlinsert = "INSERT INTO `eduscope_db`.`PHOTO` (`PhotoName`,`Description`,`IdSchool`,`GroupView`,`IdRpi`,`IdUserCreate`,`PathParent`,`Status`)
-		 VALUES ('$_photoName','$_description',$idsch,$_groupview,$idrpi,$iduser,'$dir_image',1)";
+		 VALUES ('$_photoName','$_description',$idsch,$_groupview,$idrpi,$iduser,'$path',1)";
 		$idPhoto = parent::execSQLReturnID($sqlinsert);
 		if($idPhoto == 0){
 			return 42;
 		}
+        
+        $sqlinsertAP = "INSERT INTO `eduscope_db`.`ALBUM_PHOTO` (`IdAlbum`,`IdPhoto`,`Note`,`IdUserCreate`,`Status`) VALUES ($_albumId,$idPhoto,'',$iduser,1)";
+        if (!parent::execSQL($sqlinsertAP)) {
+            return 42;
+        }
+        
 		$dir_image = $dir_image."/".strval($idPhoto);
 		if (file_exists($dir_image)){
 			return 42;
@@ -515,8 +572,8 @@ class UsersModel extends dbhelper{
 		mkdir($dir_image."/I",0777,true);
 		mkdir($dir_image."/M",0777,true);
 		move_uploaded_file($_data["tmp_name"],$dir_image."/F/".$_photoName);
-		$this->makeThumbnails($dir_image."/M/", $dir_image."/F/".$_photoName, $_photoName, 800, 600);
-		$this->makeThumbnails($dir_image."/I/", $dir_image."/F/".$_photoName, $_photoName, 256, 128);
+		$this->makeThumbnails($dir_image."/M/", $dir_image."/F/".$_photoName, $_photoName, 1200, 720);
+		$this->makeThumbnails($dir_image."/I/", $dir_image."/F/".$_photoName, $_photoName, 640, 480);
 		return 0;
 	}
     
@@ -525,13 +582,13 @@ class UsersModel extends dbhelper{
 		$idpro = $this->getLocationName($idsch)[2];
 		$this->createDir($_iduser);
 		if ($_albumId==0) {
-			$dir = "../image/".strval($idpro)."/".strval($idsch)."/".strval($_albumId);
+			$dir = "../uploads/".strval($idpro)."/".strval($idsch)."/".strval($_albumId);
 			if (!file_exists($dir)){
 				mkdir($dir,0777,true);
 			}
 			return $dir;
 		}
-		$dir = "../image/".strval($idpro)."/".strval($idsch)."/".strval($_iduser)."/".strval($_albumId);
+		$dir = "../uploads/".strval($idpro)."/".strval($idsch)."/".strval($_iduser)."/".strval($_albumId);
 		if (!file_exists($dir)) {
 			mkdir($dir,0777,true);
 		}

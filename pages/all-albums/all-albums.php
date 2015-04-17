@@ -28,7 +28,8 @@
                             <option></option>
                         </select>
                     </div>
-                    <!-- 
+<!--
+                     
                     <div class="col-sm-4 col-md-6">
                         <div class="btn-group pull-right">
                             <label for="ty-album" type="button" class="btn btn-default">
@@ -42,6 +43,7 @@
                         </div>
                     </div>
 -->
+
                 </form>
             </div>
             <div class="row album-grid">
@@ -369,6 +371,7 @@
     <script src="assets/js/app/ajax.js"></script>
     <script>
         setGetType('all');
+        setStyle('all');
         loadFirstAlbumPage();
     </script>
 </body>

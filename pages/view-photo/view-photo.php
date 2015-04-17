@@ -1,24 +1,36 @@
 		<!-- above is header -->
+		<?php
+            $model = new UsersModel();
+            //$photoInfo = $model->getPhotobyId($photoId);
+            $photo = $model->getListPhoto("", $photoId, 0)[0];
+            
+            if($photo == null) {
+                echo "<h1>Photo not exist</h1>";
+            } else {
+                $owner = $model->getUserbyId($photo->snippet['userUpload']);
+                if($owner == null)
+                    echo "Could not get owner of this photo";
+        ?>
 		<div class="warper container-fluid">
 			<div class="page-header text-center">
-				<h1>Photo #1</h1>
+				<h1><?php echo basename($photo->snippet['photoName'], '.jpg'); ?></h1>
 			</div>
 			<div class="row">
 				<div class="col-md-8">
 					<div id="photo" data-id="01">
-						<img src="http://placehold.it/1200x720/bada55/000000?text=Photo" alt="" class="img-responsive">
+						<img src="<?php echo $photo->snippet['path'].'/'.$photoId.'/M/'.$photo->snippet['photoName'];?>" alt="" class="img-responsive">
 						<button class="fullscreen-toggle transit btn btn-default"><i class="fa fa-arrows-alt"></i>
 						</button>
 					</div>
 					<div class="panel panel-default actions">
 						<div class="panel-body row">
 							<div class="col-sm-6">
-								<a href="http://placehold.it/1200x720/bada55/000000?text=Original" download="filename.jpg" class="btn btn-default"><i class="fa fa-download"></i> Tải ảnh</a>
+								<a href="<?php echo $photo->snippet['path'].'/'.$photoId.'/F/'.$photo->snippet['photoName'];?>" class="btn btn-default"><i class="fa fa-download"></i> Tải ảnh</a>
 							</div>
 							<div class="col-sm-6 photo-statistics text-right">
-								<b>12409</b> lượt xem
+								<b><?php echo $photo->statistics['view']; ?></b> lượt xem
 								<div class="rating">
-									<small>(<span class="rating-count">22</span> đánh giá)</small>
+									<small>(<span class="rating-count"><?php echo $photo->statistics['rating']['total']; ?></span> đánh giá)</small>
 									<span class="star-rating">
 										<i class="fa fa-star"></i>
 										<i class="fa fa-star"></i>
@@ -33,7 +45,7 @@
 					<div class="panel panel-default description">
 						<div class="panel-body">
 							<div class="description-content">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quae accusamus minima eius praesentium illo dolorem ullam at cupiditate, adipisci asperiores quam pariatur eaque repellat distinctio repellendus eum culpa tempore voluptas maiores, voluptatum, repudiandae voluptate ipsum! Earum, aut! Deleniti, est vitae libero quia iusto, fuga culpa architecto recusandae esse eius accusamus, totam temporibus! Praesentium quis, tempora quo. Labore officiis accusantium fugiat vel quae rem aliquam incidunt alias, nihil ratione mollitia animi itaque, maxime porro dolorem iste? Vitae beatae voluptate nobis aspernatur. Praesentium explicabo, aut pariatur repellat iste sapiente nisi dicta? Harum quibusdam iure dolore quaerat. Illo voluptas similique debitis nobis.
+								<?php echo $photo->snippet['description']; ?>
 							</div>
 							<a class="edit" href="#"><i class="fa fa-pencil"></i></a>
 						</div>
@@ -50,20 +62,20 @@
 						<div class="panel-heading">Thông tin ảnh</div>
 						<div class="panel-body photo-details">
 							<div class="author clearfix">
-								<a href="user1.html"><img src="assets/images/avtar/user.png" alt="" class="avatar">
+								<a href="user1.html"><img src="assets/images/avtar/user.jpg" alt="" class="avatar">
 								</a>
 								<div>
-									<a href="user1.html" class="name">Việt</a>
-									<p class="small n"><b>512</b> ảnh</p>
+									<a href="user1.html" class="name"><?php echo $owner->fullName; ?></a>
+									<p class="small n"><b><?php echo $owner->numPhoto; ?></b> ảnh</p>
 								</div>
 							</div>
 							<dl class="data photo-data">
 								<dt><i class="fa fa-map-marker"></i> Địa điểm</dt>
-								<dd>HCMc</dd>
+								<dd><?php echo $owner->provinceName; ?></dd>
 								<dt><i class="fa fa-calendar"></i> Thời gian</dt>
-								<dd>20:00 24/01/2015</dd>
+								<dd><?php echo date("d/m/Y h:m:s", strtotime($photo->snippet['dateUploaded'])); ?></dd>
 								<dt><i class="fa fa-photo"></i> Album</dt>
-								<dd>Album #1</dd>
+								<dd><?php echo $photo->snippet['albumName']; ?></dd>
 								<dt>...</dt>
 								<dd>...</dd>
 							</dl>
@@ -92,3 +104,6 @@
 	<script src="assets/js/app/custom.js" type="text/javascript"></script>
 </body>
 </html>
+<?php
+            }
+?>

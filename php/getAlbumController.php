@@ -23,7 +23,7 @@
                                 'name' => $r->albumName, 
                                 'description' => $r->description, 
                                 'thumbnail' => "http://placehold.it/640x480", 
-                                'created_date' => $r->dateCreated, 
+                                'created_date' => date("d/m/Y", strtotime($r->dateCreated)), 
                                 'url' => "#album", 
                                 "author" => array('id' => '00010',
                                                   'name' => $r->ownerName, 

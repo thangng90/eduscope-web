@@ -25,6 +25,9 @@
     
     <!-- Custom JQuery -->
     <script src="assets/js/app/var.js" type="text/javascript"></script>
+    
+    <!-- Crypto -->
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
 </head>
 
 <body>
